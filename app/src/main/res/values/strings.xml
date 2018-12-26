@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Dice</string>
+    <string name="die1_description">The number 1 die.</string>
+    <string name="die2_description">The number 2 die.</string>
+    <string name="die3_description">The number 3 die.</string>
+    <string name="die4_description">The number 4 die.</string>
+    <string name="die5_description">The number 5 die.</string>
+    <string name="die6_description">The number 6 die.</string>
+    <string name="btn_roll_dice_description">Press button to roll the dice.</string>
+    <string name="btn_roll_dice">Roll Dice</string>
+</resources>
