@@ -13,7 +13,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_title">About</string>
     <string name="application_title">Application title.</string>
-    <string name="dice">DICE v1.1</string>
+    <string name="dice">DICE</string>
+    <string name="about_versionNumber">version 1.1</string>
     <string name="by_luc_schulz">by Luc Schulz</string>
     <string name="the_creative_minds_company_ltd">The Creative Minds Company Ltd.</string>
     <string name="copyright_2018">Copyright 2018</string>

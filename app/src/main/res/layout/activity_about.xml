@@ -33,7 +33,24 @@
             android:contentDescription="@string/application_title"
             android:text="@string/dice"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_VersionNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_versionNumber"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/text_LastUpdatedOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/last_updated_on"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_About_Author"
@@ -41,6 +58,7 @@
             android:layout_height="wrap_content"
             android:text="@string/by_luc_schulz"
             android:textAlignment="center"
+            android:layout_marginTop="30dp"
             android:textSize="18sp" />
 
         <TextView
@@ -56,26 +74,7 @@
             android:layout_height="wrap_content"
             android:text="@string/copyright_2018"
             android:textAlignment="center" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout_BottomPane"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/text_LastUpdatedOn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            tools:text="@string/last_updated_on" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
