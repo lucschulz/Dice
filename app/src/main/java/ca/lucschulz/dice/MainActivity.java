@@ -11,17 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private Dice dice;
-
+    private List<ImageView> dieImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dieImages = new ArrayList<ImageView>();
         dice = new Dice();
         configureButtons();
         configureDice();
@@ -48,18 +52,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void configureDice() {
-        Die die = new Die();
-        Die die2 = new Die();
+        for(int i = 0; i < 6; i++){
+            String imgId = "img_die" + i;
+            int imageResourceId = getResources().getIdentifier(imgId, "id", getPackageName());
+            ImageView imgView = findViewById(imageResourceId);
 
-        dice.addDie(die);
-        dice.addDie(die2);
+            Die die = new Die();
+            die.setVisible(true);
+            die.setImageView(imgView);
+            dice.addDie(die);
+        }
     }
+
 
 
     private void showAboutInfo() {
         Intent intent = new Intent(this, About.class);
         startActivity(intent);
     }
+
 
 
 

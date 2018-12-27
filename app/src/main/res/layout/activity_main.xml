@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -24,8 +25,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/dieLeft1_Description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="25dp"
                 app:srcCompat="@drawable/die2" />
 
             <ImageView
@@ -33,6 +33,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/dieLeft2_Description"
+                android:layout_marginStart="25dp"
                 android:visibility="visible"
                 app:srcCompat="@drawable/die4" />
         </LinearLayout>
@@ -40,6 +41,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -48,6 +50,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/dieLeft2_Description"
+                android:layout_marginEnd="25dp"
                 app:srcCompat="@drawable/die4" />
 
             <ImageView
@@ -55,6 +58,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/dieLeft2_Description"
+                android:layout_marginStart="25dp"
                 app:srcCompat="@drawable/die4" />
 
         </LinearLayout>
@@ -62,6 +66,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:visibility="visible">
@@ -71,6 +76,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/dieLeft2_Description"
+                android:layout_marginEnd="25dp"
                 app:srcCompat="@drawable/die4" />
 
             <ImageView
@@ -78,6 +84,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/dieRight1_Description"
+                android:layout_marginStart="25dp"
                 app:srcCompat="@drawable/die6" />
         </LinearLayout>
     </LinearLayout>
