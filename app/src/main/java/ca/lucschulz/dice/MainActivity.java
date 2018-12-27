@@ -1,7 +1,11 @@
 package ca.lucschulz.dice;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +23,35 @@ public class MainActivity extends AppCompatActivity {
         dice = new Dice();
         configureButtons();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.frament_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                showAboutInfo();
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
+
+
+    private void showAboutInfo() {
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
+    }
+
+
+
+
 
     private void configureButtons() {
         Button btnRollDice = findViewById(R.id.btnRollDice);
