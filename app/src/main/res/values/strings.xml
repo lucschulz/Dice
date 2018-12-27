@@ -19,4 +19,7 @@
     <string name="the_creative_minds_company_ltd">The Creative Minds Company Ltd.</string>
     <string name="copyright_2018">Copyright 2018</string>
     <string name="last_updated_on">Last updated on: December 26th, 2018</string>
+    <string name="dieLeft2_Description">The second left-sided die.</string>
+    <string name="dieLeft1_Description">The first left-sided die.</string>
+    <string name="dieRight1_Description">The first right-sided die.</string>
 </resources>

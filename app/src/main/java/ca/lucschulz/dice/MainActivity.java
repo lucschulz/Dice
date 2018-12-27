@@ -1,6 +1,7 @@
 package ca.lucschulz.dice;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         dice = new Dice();
         configureButtons();
+        configureDice();
     }
 
     @Override
@@ -44,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void configureDice() {
+        Die die = new Die();
+        Die die2 = new Die();
+
+        dice.addDie(die);
+        dice.addDie(die2);
+    }
+
+
     private void showAboutInfo() {
         Intent intent = new Intent(this, About.class);
         startActivity(intent);
@@ -61,10 +73,50 @@ public class MainActivity extends AppCompatActivity {
                 rollDice();
             }
         });
+
+        FloatingActionButton btnAddDie = findViewById(R.id.btn_AddDie);
+        btnAddDie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addDie();
+            }
+        });
+
+        FloatingActionButton btnRemoveDie = findViewById(R.id.btnRemoveDie);
+        btnRemoveDie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeDie();
+            }
+        });
     }
 
+
+
+
+    // Adds a die up to a maximum of six.
+    private void addDie() {
+        ImageView imgDieLeft2 = findViewById(R.id.img_die2);
+        imgDieLeft2.setVisibility(View.VISIBLE);
+
+        if (dice.countActiveDice() < 6) {
+            Die die = new Die();
+            dice.addDie(die);
+        }
+    }
+
+
+    // Remove the last die in the list.
+    private void removeDie() {
+        int activeDice = dice.countActiveDice();
+        dice.removeDie(activeDice - 1);
+    }
+
+
+
+
     private void rollDice() {
-        ImageView imgDieLeft = findViewById(R.id.img_dieLeft);
+        ImageView imgDieLeft = findViewById(R.id.img_die1);
         ImageView imgDieRight = findViewById(R.id.img_dieRight);
 
         dice.rollDice();
