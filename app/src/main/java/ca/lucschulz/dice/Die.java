@@ -1,5 +1,6 @@
 package ca.lucschulz.dice;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -33,11 +34,23 @@ public class Die {
     }
 
     public boolean isVisible() {
-        return isVisible;
+        int visibility = imageView.getVisibility();
+        if (visibility == View.VISIBLE) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void setVisible(boolean visible) {
-        isVisible = visible;
+        if (visible) {
+            imageView.setVisibility(View.VISIBLE);
+        }
+        else {
+            imageView.setVisibility(View.INVISIBLE);
+        }
+
     }
 
     private void setDieValue(ImageView dieImg, int value) {

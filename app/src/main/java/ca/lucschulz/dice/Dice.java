@@ -1,37 +1,65 @@
 package ca.lucschulz.dice;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dice {
 
-    private List<Die> dice;
+    private List<Die> diceList = new ArrayList<>();
+    private int numberOfDiceVisible;
 
-
-    public Dice() {
-        dice = new ArrayList<Die>();
-    }
+    public Dice() {}
 
     public void rollDice() {
-        for (Die die : dice) {
+        for (Die die : diceList) {
             die.rollDie();
         }
     }
 
-    public void addDie(Die die) {
-        dice.add(die);
+    public void setDiceVisibility(int numberOfDiceVisible) {
+        this.numberOfDiceVisible = numberOfDiceVisible;
+        Die[] dice = diceList.toArray(new Die[diceList.size()]);
+
+        for (Die die : dice) {
+            die.setVisible(false);
+        }
+
+        for (int i = 0; i < numberOfDiceVisible; i++) {
+            Die die = dice[i];
+            die.setVisible(true);
+        }
     }
 
-    public void removeDie() {
-        dice.remove(0);
-        // TODO method should remove a random die out of those in the List.
+    public void makeLastDieInvisible() {
+        List<Die> list = new ArrayList<>();
+
+        for (Die die : diceList) {
+            if (die.isVisible()) {
+                list.add(die);
+            }
+        }
+
+        if (list.size() > 0) {
+            list.get(list.size() - 1).setVisible(false);
+        }
     }
 
-    public void removeDie(int index) {
-        dice.remove(index);
+    public void makeNextDieVisible() {
+        List<Die> list = new ArrayList<>();
+
+        for (Die die : diceList) {
+            if (die.isVisible() == false) {
+                list.add(die);
+            }
+        }
+
+        if (list.size() > 0) {
+            list.get(0).setVisible(true);
+        }
     }
 
-    public int countActiveDice() {
-        return dice.size();
+    public void addDieToArray(Die die) {
+        diceList.add(die);
     }
 }

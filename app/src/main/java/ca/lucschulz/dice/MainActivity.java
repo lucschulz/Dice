@@ -11,12 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    private int visibleDice;
     private Dice dice;
 
     @Override
@@ -24,12 +20,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        visibleDice = 6;
-        visibleDice = 6;
         dice = new Dice();
 
         configureButtons();
         configureDice();
+
+        setDiceVisibility(2);
     }
 
     @Override
@@ -51,6 +47,21 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    private void setDiceVisibility(int numberOfDiceVisible) {
+        dice.setDiceVisibility(numberOfDiceVisible);
+    }
+
+    // Adds a die up to a maximum of six.
+    private void makeNextDieVisible() {
+        dice.makeNextDieVisible();
+    }
+
+    // Remove the last die in the list.
+    private void makeLastDieInvisible() {
+        dice.makeLastDieInvisible();
+    }
+
+
 
     private void configureDice() {
         for(int i = 1; i <= 6; i++){
@@ -60,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
             Die die = new Die(imgView);
             die.setVisible(true);
-            dice.addDie(die);
+            dice.addDieToArray(die);
             dice.rollDice();
         }
     }
@@ -87,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddDie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addDie();
+                makeNextDieVisible();
             }
         });
 
@@ -95,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         btnRemoveDie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeDie();
+                makeLastDieInvisible();
             }
         });
     }
@@ -103,23 +114,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    // Adds a die up to a maximum of six.
-    private void addDie() {
-
-    }
-
-
-    // Remove the last die in the list.
-    private void removeDie() {
-        int activeDice = dice.countActiveDice();
-        dice.removeDie(activeDice - 1);
-    }
-
 
 
 
     private void rollDice() {
         dice.rollDice();
-
     }
 }
