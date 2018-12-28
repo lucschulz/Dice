@@ -5,22 +5,17 @@ import java.util.List;
 
 public class Dice {
 
-    private Die leftDie;
-    private Die rightDie;
-
     private List<Die> dice;
 
 
     public Dice() {
         dice = new ArrayList<Die>();
-
-        leftDie = new Die();
-        rightDie = new Die();
     }
 
     public void rollDice() {
-        leftDie.rollDie();
-        rightDie.rollDie();
+        for (Die die : dice) {
+            die.rollDie();
+        }
     }
 
     public void addDie(Die die) {
@@ -38,29 +33,5 @@ public class Dice {
 
     public int countActiveDice() {
         return dice.size();
-    }
-
-    public Die getRightDie() {
-        return rightDie;
-    }
-
-    public void setRightDie(Die rightDie) {
-        this.rightDie = rightDie;
-    }
-
-    public int getRightDieValue() {
-        return rightDie.getDieValue();
-    }
-
-    public Die getLeftDie() {
-        return leftDie;
-    }
-
-    public void setLeftDie(Die leftDie) {
-        this.leftDie = leftDie;
-    }
-
-    public int getLeftDieValue() {
-        return leftDie.getDieValue();
     }
 }

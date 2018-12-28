@@ -14,19 +14,20 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
 
+    private int visibleDice;
     private Dice dice;
-    private List<ImageView> dieImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dieImages = new ArrayList<ImageView>();
+        visibleDice = 6;
+        visibleDice = 6;
         dice = new Dice();
+
         configureButtons();
         configureDice();
     }
@@ -52,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void configureDice() {
-        for(int i = 0; i < 6; i++){
+        for(int i = 1; i <= 6; i++){
             String imgId = "img_die" + i;
             int imageResourceId = getResources().getIdentifier(imgId, "id", getPackageName());
             ImageView imgView = findViewById(imageResourceId);
 
-            Die die = new Die();
+            Die die = new Die(imgView);
             die.setVisible(true);
-            die.setImageView(imgView);
             dice.addDie(die);
+            dice.rollDice();
         }
     }
 
@@ -70,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, About.class);
         startActivity(intent);
     }
-
-
-
 
 
 
@@ -107,13 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Adds a die up to a maximum of six.
     private void addDie() {
-        ImageView imgDieLeft2 = findViewById(R.id.img_die2);
-        imgDieLeft2.setVisibility(View.VISIBLE);
 
-        if (dice.countActiveDice() < 6) {
-            Die die = new Die();
-            dice.addDie(die);
-        }
     }
 
 
@@ -127,33 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void rollDice() {
-        ImageView imgDieLeft = findViewById(R.id.img_die1);
-        ImageView imgDieRight = findViewById(R.id.img_dieRight);
-
         dice.rollDice();
 
-        setDieValue(imgDieLeft, dice.getLeftDieValue());
-        setDieValue(imgDieRight, dice.getRightDieValue());
-    }
-
-    private void setDieValue(ImageView dieImg, int value) {
-        if (value == 1) {
-            dieImg.setImageResource(R.drawable.die1);
-        }
-        else if (value == 2) {
-            dieImg.setImageResource(R.drawable.die2);
-        }
-        else if (value == 3) {
-            dieImg.setImageResource(R.drawable.die3);
-        }
-        else if (value == 4) {
-            dieImg.setImageResource(R.drawable.die4);
-        }
-        else if (value == 5) {
-            dieImg.setImageResource(R.drawable.die5);
-        }
-        else if (value == 6) {
-            dieImg.setImageResource(R.drawable.die6);
-        }
     }
 }

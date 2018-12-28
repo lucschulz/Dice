@@ -24,18 +24,18 @@
                 android:id="@+id/img_die1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/dieLeft1_Description"
                 android:layout_marginEnd="25dp"
-                app:srcCompat="@drawable/die2" />
+                android:contentDescription="@string/dieLeft1_Description"
+                app:srcCompat="@drawable/die1" />
 
             <ImageView
                 android:id="@+id/img_die2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/dieLeft2_Description"
                 android:layout_marginStart="25dp"
+                android:contentDescription="@string/dieLeft2_Description"
                 android:visibility="visible"
-                app:srcCompat="@drawable/die4" />
+                app:srcCompat="@drawable/die2" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,9 +49,9 @@
                 android:id="@+id/img_die3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/dieLeft2_Description"
                 android:layout_marginEnd="25dp"
-                app:srcCompat="@drawable/die4" />
+                android:contentDescription="@string/dieLeft2_Description"
+                app:srcCompat="@drawable/die3" />
 
             <ImageView
                 android:id="@+id/img_die4"
@@ -75,9 +75,9 @@
                 android:id="@+id/img_die5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/dieLeft2_Description"
                 android:layout_marginEnd="25dp"
-                app:srcCompat="@drawable/die4" />
+                android:contentDescription="@string/dieLeft2_Description"
+                app:srcCompat="@drawable/die5" />
 
             <ImageView
                 android:id="@+id/img_die6"
