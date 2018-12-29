@@ -25,7 +25,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="25dp"
-                android:contentDescription="@string/dieLeft1_Description"
+                android:contentDescription="@string/imagedesc_dice"
                 app:srcCompat="@drawable/die1" />
 
             <ImageView
@@ -33,7 +33,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="25dp"
-                android:contentDescription="@string/dieLeft2_Description"
+                android:contentDescription="@string/imagedesc_dice"
                 android:visibility="visible"
                 app:srcCompat="@drawable/die2" />
         </LinearLayout>
@@ -50,14 +50,14 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="25dp"
-                android:contentDescription="@string/dieLeft2_Description"
+                android:contentDescription="@string/imagedesc_dice"
                 app:srcCompat="@drawable/die3" />
 
             <ImageView
                 android:id="@+id/img_die4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/dieLeft2_Description"
+                android:contentDescription="@string/imagedesc_dice"
                 android:layout_marginStart="25dp"
                 app:srcCompat="@drawable/die4" />
 
@@ -76,14 +76,14 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="25dp"
-                android:contentDescription="@string/dieLeft2_Description"
+                android:contentDescription="@string/imagedesc_dice"
                 app:srcCompat="@drawable/die5" />
 
             <ImageView
                 android:id="@+id/img_die6"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/dieRight1_Description"
+                android:contentDescription="@string/imagedesc_dice"
                 android:layout_marginStart="25dp"
                 app:srcCompat="@drawable/die6" />
         </LinearLayout>
