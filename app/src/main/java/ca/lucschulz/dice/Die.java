@@ -5,32 +5,26 @@ import android.widget.ImageView;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+enum diceColours {
+    white,
+    transparent
+}
+
 public class Die {
 
     private int dieValue;
-    private boolean isVisible;
+    private diceColours colour;
     private ImageView imageView;
 
-    public Die(ImageView imageView) {
+    public Die(ImageView imageView, diceColours colour) {
         this.imageView = imageView;
+        this.colour = colour;
         rollDie();
     }
 
     public void rollDie() {
         dieValue = ThreadLocalRandom.current().nextInt(1, 6 + 1);
-        setDieValue(imageView, dieValue);
-    }
-
-    public int getDieValue() {
-        return dieValue;
-    }
-
-    public ImageView getImageView() {
-        return imageView;
-    }
-
-    public void setImageView(ImageView imageView) {
-        this.imageView = imageView;
+        setDieValue(imageView, dieValue, colour);
     }
 
     public boolean isVisible() {
@@ -53,24 +47,48 @@ public class Die {
 
     }
 
-    private void setDieValue(ImageView dieImg, int value) {
-        if (value == 1) {
-            dieImg.setImageResource(R.drawable.die1);
+    private void setDieValue(ImageView dieImg, int value, diceColours colour) {
+
+        if (colour == diceColours.white) {
+            if (value == 1) {
+                dieImg.setImageResource(R.drawable.die1_white);
+            }
+            else if (value == 2) {
+                dieImg.setImageResource(R.drawable.die2_white);
+            }
+            else if (value == 3) {
+                dieImg.setImageResource(R.drawable.die3_white);
+            }
+            else if (value == 4) {
+                dieImg.setImageResource(R.drawable.die4_white);
+            }
+            else if (value == 5) {
+                dieImg.setImageResource(R.drawable.die5_white);
+            }
+            else if (value == 6) {
+                dieImg.setImageResource(R.drawable.die6_white);
+            }
         }
-        else if (value == 2) {
-            dieImg.setImageResource(R.drawable.die2);
-        }
-        else if (value == 3) {
-            dieImg.setImageResource(R.drawable.die3);
-        }
-        else if (value == 4) {
-            dieImg.setImageResource(R.drawable.die4);
-        }
-        else if (value == 5) {
-            dieImg.setImageResource(R.drawable.die5);
-        }
-        else if (value == 6) {
-            dieImg.setImageResource(R.drawable.die6);
+
+        else if (colour == diceColours.transparent) {
+            if (value == 1) {
+                dieImg.setImageResource(R.drawable.die1);
+            }
+            else if (value == 2) {
+                dieImg.setImageResource(R.drawable.die2);
+            }
+            else if (value == 3) {
+                dieImg.setImageResource(R.drawable.die3);
+            }
+            else if (value == 4) {
+                dieImg.setImageResource(R.drawable.die4);
+            }
+            else if (value == 5) {
+                dieImg.setImageResource(R.drawable.die5);
+            }
+            else if (value == 6) {
+                dieImg.setImageResource(R.drawable.die6);
+            }
         }
     }
 }
