@@ -9,14 +9,14 @@
     <string name="btn_roll_dice_description">Press button to roll the dice.</string>
     <string name="btn_roll_dice">Roll Dice</string>
 
-    <string name="last_updated_on">Last updated on: December 29th, 2018</string>
+    <string name="about_lastUpdatedOn">Last updated on: December 29th, 2018</string>
     <string name="about_versionNumber">version 1.3</string>
 
-    <string name="application_title">Application title.</string>
-    <string name="dice">DICE</string>
-    <string name="by_luc_schulz">by Luc Schulz</string>
-    <string name="the_creative_minds_company_ltd">The Creative Minds Company Ltd.</string>
-    <string name="copyright_2018">Copyright 2018</string>
+    <string name="about_applicationTitle">DICE</string>
+    <string name="about_byLucSchulz">Created by Luc Schulz</string>
+    <string name="about_creativeMindsCompanyLtd">The Creative Minds Company Ltd.</string>
+    <string name="about_copyrightNotice">The red circle logo is © 2005-2019 Luc Schulz.
+        \nSource code is available under the MIT license on <a href="https://github.com/lucschulz/Dice/">GitHub</a>.</string>
 
     <!-- IMAGE DESCRIPTIONS -->
     <string name="imagedesc_dice">A die.</string>

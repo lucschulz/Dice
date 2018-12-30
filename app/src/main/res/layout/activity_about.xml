@@ -20,7 +20,7 @@
             android:id="@+id/img_creativeMindsLogoBig"
             android:layout_width="207dp"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/the_creative_minds_company_ltd"
+            android:contentDescription="@string/about_creativeMindsCompanyLtd"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/circle"
             tools:layout_editor_absoluteX="89dp" />
@@ -30,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:contentDescription="@string/application_title"
-            android:text="@string/dice"
+            android:contentDescription="@string/about_applicationTitle"
+            android:text="@string/about_applicationTitle"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:id="@+id/text_LastUpdatedOn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/last_updated_on"
+            android:text="@string/about_lastUpdatedOn"
             android:textAlignment="center"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -56,7 +56,7 @@
             android:id="@+id/text_About_Author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/by_luc_schulz"
+            android:text="@string/about_byLucSchulz"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
             android:textSize="18sp" />
@@ -65,14 +65,15 @@
             android:id="@+id/text_Company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/the_creative_minds_company_ltd"
+            android:text="@string/about_creativeMindsCompanyLtd"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/text_Copyright"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/copyright_2018"
+            android:layout_marginTop="20dp"
+            android:text="@string/about_copyrightNotice"
             android:textAlignment="center" />
 
     </LinearLayout>
