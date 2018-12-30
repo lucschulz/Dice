@@ -1,13 +1,15 @@
 package ca.lucschulz.dice;
 
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dice {
+public class Dice implements Serializable {
 
     private List<Die> diceList = new ArrayList<>();
-    private int numberOfDiceVisible;
+    private static DieColors dieColor;
+
+
 
     public Dice() {}
 
@@ -17,8 +19,38 @@ public class Dice {
         }
     }
 
+    /**
+     * Sets the color of the dice to the one that was specified in setDieColor()
+     */
+    public void changeColorOfDice() {
+        for (Die die : diceList) {
+            die.setDieColor(this.dieColor);
+        }
+    }
+
+    /**
+     * Sets the color of the dice.
+     * @param dieColor the color to change the dice to
+     */
+    public static void setDieColor(DieColors dieColor) {
+        Dice.dieColor = dieColor;
+    }
+
+    /*
+    * Returns the currently set color for the dice.
+    */
+    public static DieColors getDieColor() {
+        return dieColor;
+    }
+
+
+
+
+
+
+
+
     public void setDiceVisibility(int numberOfDiceVisible) {
-        this.numberOfDiceVisible = numberOfDiceVisible;
         Die[] dice = diceList.toArray(new Die[diceList.size()]);
 
         for (Die die : dice) {

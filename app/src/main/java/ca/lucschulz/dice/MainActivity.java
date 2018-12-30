@@ -10,21 +10,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     private Dice dice;
+//    private static DieColors dieColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        dieColor = DieColors.WHITE;
+        Dice.setDieColor(DieColors.WHITE);
+
         dice = new Dice();
 
         configureButtons();
         configureDice();
 
-        setDiceVisibility(2);
+        setDiceVisibility(6);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dice.changeColorOfDice();
     }
 
     @Override
@@ -39,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_about:
-                startNewActivity(About.class);
+                launchAboutActivity();
                 break;
             case R.id.menu_settings:
-                startNewActivity(SettingsActivity.class);
+                launchSettingsActivity();
                 break;
             default:
                 break;
@@ -50,8 +62,13 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    private void startNewActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
+    private void launchAboutActivity() {
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
+    }
+
+    private void launchSettingsActivity() {
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
     //endregion
@@ -83,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             int imageResourceId = getResources().getIdentifier(imgId, "id", getPackageName());
             ImageView imgView = findViewById(imageResourceId);
 
-            Die die = new Die(imgView, diceColours.white);
+            Die die = new Die(imgView, Dice.getDieColor());
             die.setVisible(true);
             dice.addDieToArray(die);
             dice.rollDice();
