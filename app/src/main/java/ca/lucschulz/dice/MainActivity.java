@@ -10,19 +10,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import org.greenrobot.greendao.database.Database;
+
+import ca.lucschulz.dice.green.Colours;
+import ca.lucschulz.dice.green.DaoMaster;
+import ca.lucschulz.dice.green.DaoSession;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private Dice dice;
-//    private static DieColors dieColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        dieColor = DieColors.WHITE;
         Dice.setDieColor(DieColors.WHITE);
 
         dice = new Dice();
@@ -31,6 +34,21 @@ public class MainActivity extends AppCompatActivity {
         configureDice();
 
         setDiceVisibility(6);
+
+        dbSetup();
+    }
+
+    void dbSetup() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "settingsdb.db");
+        Database db = helper.getWritableDb();
+        DaoSession session = new DaoMaster(db).newSession();
+
+        Colours colours = new Colours();
+        colours.setColour("TRANSPARENT");
+        colours.setIsSelected(false);
+        session.insert(colours);
+
+        db.close();
     }
 
     @Override
