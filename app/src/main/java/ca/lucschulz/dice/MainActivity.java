@@ -9,13 +9,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import org.greenrobot.greendao.AbstractDaoSession;
 import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import java.util.List;
 
 import ca.lucschulz.dice.green.Colours;
+import ca.lucschulz.dice.green.ColoursDao;
 import ca.lucschulz.dice.green.DaoMaster;
 import ca.lucschulz.dice.green.DaoSession;
 
+enum DieColor {
+    WHTIE(1),
+    TRANSPARENT(2);
+
+    private final int id;
+    DieColor(int id) { this.id = id; }
+    public int getValue() { return id; }
+}
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,10 +57,13 @@ public class MainActivity extends AppCompatActivity {
         Database db = helper.getWritableDb();
         DaoSession session = new DaoMaster(db).newSession();
 
-        Colours colours = new Colours();
-        colours.setColour("TRANSPARENT");
-        colours.setIsSelected(false);
-        session.insert(colours);
+        List<Colours> qb = session.queryBuilder(Colours.class)
+                .where(ColoursDao.Properties.IsSelected.eq(true))
+                .orderAsc(ColoursDao.Properties.Colour)
+                .list();
+
+        Colours result = qb.get(0);
+        Toast.makeText(getApplicationContext(), result.getColour(), Toast.LENGTH_SHORT).show();
 
         db.close();
     }
