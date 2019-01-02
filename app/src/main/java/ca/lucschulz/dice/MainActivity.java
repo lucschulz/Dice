@@ -22,14 +22,6 @@ import ca.lucschulz.dice.green.ColoursDao;
 import ca.lucschulz.dice.green.DaoMaster;
 import ca.lucschulz.dice.green.DaoSession;
 
-enum DieColor {
-    WHTIE(1),
-    TRANSPARENT(2);
-
-    private final int id;
-    DieColor(int id) { this.id = id; }
-    public int getValue() { return id; }
-}
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Dice.setDieColor(DieColors.WHITE);
+        Colours die = new Colours();
+        die.setColour(Dice.getDieColourWhiteName());
+        Dice.setDieColour(die);
 
         dice = new Dice();
 
@@ -70,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Colours white = new Colours();
-            white.setColour("WHITE");
+            white.setColour(Dice.getDieColourWhiteName());
             white.setIsSelected(true);
 
             Colours transparent = new Colours();
-            transparent.setColour("TRANSPARENT");
+            transparent.setColour(Dice.getDieColourTransparentName());
             transparent.setIsSelected(false);
 
             session.insert(white);
@@ -160,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             int imageResourceId = getResources().getIdentifier(imgId, "id", getPackageName());
             ImageView imgView = findViewById(imageResourceId);
 
-            Die die = new Die(imgView, Dice.getDieColor());
+            Die die = new Die(imgView, this.currentColour);
             die.setVisible(true);
             dice.addDieToArray(die);
             dice.rollDice();

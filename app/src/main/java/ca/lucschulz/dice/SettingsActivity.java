@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import ca.lucschulz.dice.green.Colours;
+
 public class SettingsActivity extends AppCompatActivity {
 
     private RadioGroup radioGroupColors;
@@ -30,8 +32,8 @@ public class SettingsActivity extends AppCompatActivity {
         RadioButton btnWhite = findViewById(R.id.radioWhite);
         RadioButton btnTransparent = findViewById(R.id.radioTransparent);
 
-        btnWhite.setTag(DieColors.WHITE);
-        btnTransparent.setTag(DieColors.TRANSPARENT);
+        btnWhite.setTag(Dice.getDieColourWhiteName());
+        btnTransparent.setTag(Dice.getDieColourTransparentName());
     }
 
 
@@ -47,18 +49,19 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     private void saveColorChange() {
-        DieColors dieColor = getSelectedColor();
-        Dice.setDieColor(dieColor);
+        Colours die = new Colours();
+        die.setColour(getSelectedColor());
+        Dice.setDieColour(die);
 
         finish();
     }
 
 
-    private DieColors getSelectedColor() {
+    private String getSelectedColor() {
         radioGroupColors = findViewById(R.id.radioGroupColors);
         int selectedColorId = radioGroupColors.getCheckedRadioButtonId();
 
         radioSelectedColor = findViewById(selectedColorId);
-        return (DieColors)radioSelectedColor.getTag();
+        return (String)radioSelectedColor.getTag();
     }
 }

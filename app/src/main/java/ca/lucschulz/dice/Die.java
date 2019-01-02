@@ -5,25 +5,22 @@ import android.widget.ImageView;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-enum DieColors {
-    WHITE,
-    TRANSPARENT
-}
+import ca.lucschulz.dice.green.Colours;
 
 public class Die {
 
     private int dieValue;
-    private DieColors dieColor;
+    private Colours dieColor;
     private ImageView imageView;
 
-    public Die(ImageView imageView, DieColors colour) {
+    public Die(ImageView imageView, Colours colour) {
         this.imageView = imageView;
         this.dieColor = colour;
         rollDie();
     }
 
-    public void setDieColor(DieColors dieColor) {
-        this.dieColor = dieColor;
+    public void setDieColor(Colours dieColour) {
+        this.dieColor = dieColour;
         setDieValue(imageView, dieValue);
     }
 
@@ -54,7 +51,7 @@ public class Die {
 
     private void setDieValue(ImageView dieImg, int value) {
 
-        if (this.dieColor == DieColors.WHITE) {
+        if (this.dieColor.getColour() == "WHITE") {
             if (value == 1) {
                 dieImg.setImageResource(R.drawable.die1_white);
             }
@@ -75,7 +72,7 @@ public class Die {
             }
         }
 
-        else if (this.dieColor == DieColors.TRANSPARENT) {
+        else if (this.dieColor.getColour() == "TRANSPARENT") {
             if (value == 1) {
                 dieImg.setImageResource(R.drawable.die1);
             }
