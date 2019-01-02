@@ -34,6 +34,7 @@ enum DieColor {
 public class MainActivity extends AppCompatActivity {
 
     private Dice dice;
+    private Colours currentColour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         setDiceVisibility(6);
 
+        currentColour = new Colours();
         dbSetup();
     }
 
     void dbSetup() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "settingsdb.db");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, Strings.getDbName());
         Database db = helper.getWritableDb();
         DaoSession session = new DaoMaster(db).newSession();
 
@@ -62,8 +64,31 @@ public class MainActivity extends AppCompatActivity {
                 .orderAsc(ColoursDao.Properties.Colour)
                 .list();
 
-        Colours result = qb.get(0);
-        Toast.makeText(getApplicationContext(), result.getColour(), Toast.LENGTH_SHORT).show();
+        // If the DB is empty, add the default colour values.
+        if (!qb.isEmpty()) {
+            currentColour = qb.get(0);
+        }
+        else {
+            Colours white = new Colours();
+            white.setColour("WHITE");
+            white.setIsSelected(true);
+
+            Colours transparent = new Colours();
+            transparent.setColour("TRANSPARENT");
+            transparent.setIsSelected(false);
+
+            session.insert(white);
+            session.insert(transparent);
+
+            Toast.makeText(getApplicationContext(), "Database created successfully.", Toast.LENGTH_SHORT).show();
+
+            qb = session.queryBuilder(Colours.class)
+                    .where(ColoursDao.Properties.IsSelected.eq(true))
+                    .orderAsc(ColoursDao.Properties.Colour)
+                    .list();
+
+            currentColour = qb.get(0);
+        }
 
         db.close();
     }

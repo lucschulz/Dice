@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_dice_color_header"
+            android:textColor="@android:color/background_light"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -34,8 +35,10 @@
                 android:id="@+id/radioWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:checked="false"
                 android:text="@string/radio_colour_white"
+                android:textColor="@android:color/background_light"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="80dp"
                 tools:layout_editor_absoluteY="181dp" />
@@ -44,8 +47,10 @@
                 android:id="@+id/radioTransparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:checked="false"
                 android:text="@string/radio_colour_transparent"
+                android:textColor="@android:color/background_light"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="80dp"
                 tools:layout_editor_absoluteY="124dp" />
